@@ -107,8 +107,6 @@ These are properties of the simulated data, not bugs in the report:
 
 ## Setup
 
-**Requirements:** Power BI Desktop with Power BI Project (`.pbip`) support. If your version still lists it under *Options > Preview features*, enable the PBIP save option and TMDL model format. Clone the repo, then open `powerbi/Alberta_Oil_&_Gas Dashboard.pbip`.
-
 The model has two kinds of data source, and both need repointing on a new machine:
 
 1. **Dimension CSVs.** Five queries read from an absolute path on the original author's machine (`C:\Users\sunny\Downloads\Alberta_Oil_&_Gas_Analytics\`). In Power BI Desktop choose *Transform data*, open each `dim_*` query, edit the `Source` step and point it at the `data/dimensions/` folder of your clone. Alternatively, find-and-replace the path in the five `dim_*.tmdl` files under `SemanticModel/definition/tables/`.
