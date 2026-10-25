@@ -1,0 +1,21 @@
+operator_id,operator_name,operator_type,licence_number,contact_email,province,is_active
+1,Pembina Ridge Resources Ltd,Intermediate,AER-10021,ops@pembinaridge.ca,Alberta,True
+2,Athabasca Northern Energy Inc,Major,AER-10045,ops@athnorthern.ca,Alberta,True
+3,Cold Lake Petroleum Corp,Intermediate,AER-10067,ops@coldlakepetro.ca,Alberta,True
+4,Peace River Oil & Gas Ltd,Junior,AER-10083,ops@peaceriveroil.ca,Alberta,True
+5,Lloydminster Upstream Co,Junior,AER-10099,ops@lloydupstream.ca,Alberta,True
+6,Rainbow Energy Resources Inc,Intermediate,AER-10114,ops@rainbowenergy.ca,Alberta,True
+7,Alberta Sands Exploration Ltd,Major,AER-10132,ops@albertasands.ca,Alberta,True
+8,Western Horizon Petroleum,Junior,AER-10148,ops@westernhorizon.ca,Alberta,True
+9,Clearwater Basin Energy Corp,Intermediate,AER-10165,ops@clearwaterbasin.ca,Alberta,True
+10,Northern Foothills Oil Co,Junior,AER-10181,ops@northernfoothills.ca,Alberta,True
+11,Prairie Uplift Resources,Major,AER-10199,ops@prairieuplift.ca,Alberta,True
+12,Redwater Energy Partners,Intermediate,AER-10212,ops@redwaterenergy.ca,Alberta,True
+13,Leduc Formation Oil Inc,Junior,AER-10228,ops@leducformation.ca,Alberta,True
+14,Swan Hills Petroleum Ltd,Intermediate,AER-10244,ops@swanhillspetro.ca,Alberta,True
+15,Zama Lake Resources Corp,Junior,AER-10261,ops@zamalake.ca,Alberta,True
+16,Nipisi Energy Group,Intermediate,AER-10277,ops@nipisigroup.ca,Alberta,True
+17,Edson Upstream Partners,Junior,AER-10293,ops@edsonupstream.ca,Alberta,True
+18,Provost Basin Energy Ltd,Junior,AER-10309,ops@provostbasin.ca,Alberta,True
+19,Slave Lake Petroleum Inc,Intermediate,AER-10325,ops@slavelakepetro.ca,Alberta,True
+20,Boundary Lake Oil & Gas Corp,Major,AER-10341,ops@boundarylake.ca,Alberta,True

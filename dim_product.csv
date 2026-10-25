@@ -1,0 +1,6 @@
+product_id,product_name,product_type,unit_of_measure,benchmark_price
+1,Crude Oil,Liquid,BBL,82.0
+2,Natural Gas,Gas,MCF,3.75
+3,Natural Gas Liquids,Liquid,BBL,38.0
+4,Condensate,Liquid,BBL,78.0
+5,Bitumen,Liquid,BBL,48.0

@@ -1,0 +1,18 @@
+# Power BI Desktop local state (machine-specific, can be large, never needed to open the project)
+**/.pbi/cache.abf
+**/.pbi/localSettings.json
+**/.pbi/editorSettings.json
+*.pbix
+*.pbit
+
+# Credentials / local config
+.env
+*.env
+.Renviron
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.tmp
