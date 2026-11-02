@@ -106,7 +106,7 @@ These are properties of the simulated data, not bugs in the report:
 ```
 
 ## Setup
-
+ 
 The model has two kinds of data sources, and both need repointing on a new machine:
 
 1. **Dimension CSVs.** Five queries read from an absolute path on the original author's machine (`C:\Users\sunny\Downloads\Alberta_Oil_&_Gas_Analytics\`). In Power BI Desktop, choose *Transform data*, open each `dim_*` query, edit the `Source` step and point it at the `data/dimensions/` folder of your clone. Alternatively, find-and-replace the path in the five `dim_*.tmdl` files under `SemanticModel/definition/tables/`.
