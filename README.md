@@ -33,7 +33,7 @@ Screenshots come from Power BI's PDF export, so scrollable visuals (the monthly 
 | `data/fact_production_raw.csv` | 52,200 | Raw, deliberately dirty fact table (the ETL input) |
 | `data/fact_production_clean.csv` | 38,678 | Output of `sql/03_etl_transform.sql` on the raw file, for inspection |
 
-`scripts/generate_fact_data.py` rebuilds the raw file (fixed seed, needs `pandas` and `numpy`). It is a re-creation of the original simulation, calibrated to the original database: 210 active wells, two products per well, fixed benchmark prices, 52,200 raw rows, and the same families of injected errors (NULLs, negative and extreme volumes, zero revenue, about 12,000 duplicates, region/operator mismatches against `dim_well`). Because it is a re-creation, totals are close to, but not identical with, the screenshots (about $4.17bn revenue and 99.4M units here, against $4.47bn and 100.2M units in the original database).
+`scripts/generate_fact_data.py` rebuilds the raw file (fixed seed, needs `pandas` and `numpy`). It is a re-creation of the original simulation, calibrated to the original database: 210 active wells, two products per well, fixed benchmark prices, 52,200 raw rows, and the same families of injected errors (NULLs, negative and extreme volumes, zero revenue, about 12,000 duplicates, region/operator mismatches against `dim_well`). Because it is a re-creation, totals are close to, but not identical to, the screenshots (about $4.17bn revenue and 99.4M units here, against $4.47bn and 100.2M units in the original database).
 
 ## Data pipeline
 
@@ -71,7 +71,7 @@ A hidden `_Measures` table holds 51 DAX measures, grouped roughly as:
 - **Ratios:** operating margin %, revenue per unit, average revenue and volume per well, cost recovery ratio
 - **Time intelligence:** month-over-month, year-over-year, year-to-date and prior-year comparisons for revenue, volume and net revenue
 - **Data quality:** null, negative, extreme and zero-revenue counts, flagged-record totals and a data quality score
-- **Display helpers:** formatted revenue and volume strings, selected year / region / product labels
+- **Display helpers:** formatted revenue and volume strings, selected year/region/product labels
 
 **Operating Margin %** is defined as `(Total Revenue - Total Operating Cost) / Total Revenue`. The **YoY Revenue Growth %** card on the Executive Overview carries a visual-level filter for 2024, so it shows 2024 vs 2023 rather than an aggregate across all years, which would be misleading.
 
@@ -79,7 +79,7 @@ A hidden `_Measures` table holds 51 DAX measures, grouped roughly as:
 
 These are properties of the simulated data, not bugs in the report:
 
-1. **Margin is constant by design.** The ETL recalculates operating cost as 35% of revenue and net revenue as 65% (rules T5 and T9), and the dashboard's overall operating margin is exactly 65.00%. A chart of margin over time or by operator would be a flat line, so the operator scatter and the monthly trend on page 3 plot **revenue per unit** instead. In this data `cost_per_unit` equals the product's fixed price, so revenue per unit only moves with **product mix**, not with pricing or operating performance.
+1. **Margin is constant by design.** The ETL recalculates operating cost as 35% of revenue and net revenue as 65% (rules T5 and T9), and the dashboard's overall operating margin is exactly 65.00%. A chart of margin over time or by operator would be a flat line, so the operator scatter and the monthly trend on page 3 plot **revenue per unit** instead. In this data, `cost_per_unit` equals the product's fixed price, so revenue per unit only moves with **product mix**, not with pricing or operating performance.
 2. **Dimension sources differ.** Power BI loads the five dimension tables from the CSVs in `data/dimensions/` and only the fact table from PostgreSQL. In the original author's database, operator names and well-type assignments differed from these CSVs, and the CSV headers use different column names from the DDL. `sql/02_load_data.sql` maps the CSVs onto the DDL, so a database built from this repo is consistent with the dashboard.
 3. **The fact data in this repo is a re-creation** (see *Data* above), so numbers differ slightly from the screenshots.
 4. **Operating margin of 65% and a flat revenue-per-unit pattern are outputs of the simulation, not business findings.** The dashboard demonstrates modelling, DAX and layout; it does not support conclusions about real operators.
@@ -107,10 +107,10 @@ These are properties of the simulated data, not bugs in the report:
 
 ## Setup
 
-The model has two kinds of data source, and both need repointing on a new machine:
+The model has two kinds of data sources, and both need repointing on a new machine:
 
-1. **Dimension CSVs.** Five queries read from an absolute path on the original author's machine (`C:\Users\sunny\Downloads\Alberta_Oil_&_Gas_Analytics\`). In Power BI Desktop choose *Transform data*, open each `dim_*` query, edit the `Source` step and point it at the `data/dimensions/` folder of your clone. Alternatively, find-and-replace the path in the five `dim_*.tmdl` files under `SemanticModel/definition/tables/`.
-2. **PostgreSQL fact table.** `fact_production_clean` and `vw_etl_summary` read from the original author's Supabase host. This repo contains **no credentials**: Power BI stores them in your local credential store, not in the project files. To use your own database, from the repo root:
+1. **Dimension CSVs.** Five queries read from an absolute path on the original author's machine (`C:\Users\sunny\Downloads\Alberta_Oil_&_Gas_Analytics\`). In Power BI Desktop, choose *Transform data*, open each `dim_*` query, edit the `Source` step and point it at the `data/dimensions/` folder of your clone. Alternatively, find-and-replace the path in the five `dim_*.tmdl` files under `SemanticModel/definition/tables/`.
+2. **PostgreSQL fact table.** `fact_production_clean` and `vw_etl_summary` are read from the original author's Supabase host. This repo contains **no credentials**: Power BI stores them in your local credential store, not in the project files. To use your own database, from the repo root:
 
    ```bash
    psql "<your connection string>" -f sql/01_schema_ddl.sql
